@@ -3,6 +3,8 @@ const path = require('path');
 const fs = require('fs');
 const { OpenAI } = require('openai');
 require('dotenv').config();
+const ejs = require('ejs');
+
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -159,44 +161,19 @@ app.get('/generate-recipe', async (req, res) => {
       max_tokens: 1500
     });
 
-    const recipeText = response.choices[0].message.content.trim();
-
-    const recipeHtml = `
-      <html>
-        <head>
-          <title>Recipe for ${dishName}</title>
-          <link rel="stylesheet" href="/recipe-styles.css">
-        </head>
-        <body>
-          <header>
-            <h1>Recipe Generator</h1>
-            <nav>
-              <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/recipes">All Recipes</a></li>
-              </ul>
-            </nav>
-          </header>
-          <main>
-            <h1>Recipe for ${dishName}</h1>
-            <div class="recipe-content">
-              ${recipeText}
-            </div>
-            <a href="/">Go Back</a>
-          </main>
-          <footer>
-            <p>&copy; 2024 Recipe Generator. All rights reserved.</p>
-          </footer>
-        </body>
-      </html>
-    `;
-
+    const recipeHtml = response.choices[0].message.content.trim();
     const fileName = `${dishName.toLowerCase().replace(/\s+/g, '-')}.html`;
     const filePath = path.join(__dirname, 'public', 'recipes', fileName);
 
-    fs.writeFileSync(filePath, recipeHtml);
-
-    res.redirect(`/recipes/${fileName}`);
+    ejs.renderFile('views/recipe.ejs', { dishName, recipeHtml }, (err, html) => {
+      if (err) {
+        console.error('Error rendering EJS template:', err);
+        res.status(500).send('An error occurred while generating the recipe.');
+      } else {
+        fs.writeFileSync(filePath, html, 'utf8');
+        res.redirect(`/recipes/${fileName}`);
+      }
+    });
   } catch (error) {
     console.error('Error:', error.response ? error.response.data : error.message);
     res.status(500).send('An error occurred while generating the recipe.');
