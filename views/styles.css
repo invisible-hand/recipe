@@ -384,3 +384,66 @@ a:hover {
     padding: 4px;
   }
 }
+
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #ffd1b3;
+}
+
+.hero h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+#recipe-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#recipe-form label {
+  margin-bottom: 10px;
+}
+
+#recipe-form input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+#recipe-form button {
+  padding: 12px 24px;
+  font-size: 18px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#recipe-form button:hover {
+  background-color: #555;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h2 {
+    font-size: 24px;
+  }
+}

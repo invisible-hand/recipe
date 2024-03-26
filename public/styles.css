@@ -8,17 +8,11 @@ body {
   min-height: 100vh;
 }
 
-
 header {
   background-color: #ff6b00;
   padding: 20px;
   color: #fff;
   text-align: center;
-}
-
-header nav ul {
-  display: flex;
-  justify-content: center;
 }
 
 h1 {
@@ -31,6 +25,8 @@ nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
 }
 
 nav ul li {
@@ -78,7 +74,6 @@ form {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 800px;
 }
 
 label {
@@ -89,8 +84,8 @@ label {
 }
 
 input[type="text"] {
-  width: 80%;
-  max-width: 600px;
+  width: 100%;
+  max-width: 100%;
   padding: 12px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -150,7 +145,7 @@ footer {
 
 .hero {
   text-align: center;
-  padding: 40px 0;
+  padding: 40px 20px;
   background-color: #ffd1b3;
 }
 
@@ -180,96 +175,6 @@ footer {
 .recent-recipes li a {
   text-decoration: none;
   color: #333;
-}
-
-.recipe-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  line-height: 1.6;
-}
-
-.recipe-content p {
-  line-height: 1.6;
-}
-
-.recipe-content ul {
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-.recipe-content li {
-  margin-bottom: 5px;
-}
-
-a {
-  display: block;
-  text-align: center;
-  margin-top: 20px;
-  color: #333;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  header nav ul li {
-    display: block; /* stack nav items vertically */
-    margin: 0 auto; /* center nav items */
-  }
-
-  form, .recipe-list, .hero, .recent-recipes, .recipe-content {
-    padding: 20px; /* add padding on smaller screens */
-  }
-
-  h1, h2, h3 {
-    font-size: smaller; /* adjust heading sizes for smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    padding: 0 10px; /* add slight padding on the sides */
-  }
-
-  header, main, .recipe-list, .hero, .recent-recipes, .recipe-content {
-    padding: 10px; /* reduce padding for very small screens */
-  }
-
-  nav ul li {
-    margin-bottom: 10px; /* space out nav items */
-  }
-
-  input[type="text"] {
-    max-width: 100%; /* Make input field width responsive on smaller screens */
-  }
-
-  form {
-    align-items: center; /* Center form items */
-    width: 100%; /* Make the form container full width */
-  }
-
-  #recipe-form {
-    display: flex; /* Make the recipe-form container a flex container */
-    flex-direction: column; /* Align the form items vertically */
-    align-items: center; /* Center the form items horizontally */
-    width: 100%; /* Make the recipe-form container full width */
-  }
-
-  input[type="text"] {
-    text-align: left; /* Reset text-align to left */
-  }
-}
-
-/* Media query for desktop screens */
-@media (min-width: 769px) {
-  main, form {
-    min-width: 800px;
-  }
 }
 
 .recipe-content {
@@ -318,7 +223,65 @@ a:hover {
   font-weight: bold;
 }
 
+a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#recipe-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+#recipe-form label {
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  h1, h2, h3 {
+    font-size: larger;
+  }
+
+  form, .recipe-list, .hero, .recent-recipes, .recipe-content {
+    padding: 20px;
+  }
+}
+
 @media (max-width: 480px) {
+  body {
+    padding: 0 10px;
+  }
+
+  header, main, .recipe-list, .hero, .recent-recipes, .recipe-content {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .hero h2 {
+    font-size: 24px;
+  }
+
   .recipe-content {
     padding: 5px;
   }
@@ -330,5 +293,11 @@ a:hover {
   .recipe-content table th,
   .recipe-content table td {
     padding: 4px;
+  }
+}
+
+@media (min-width: 769px) {
+  main, form {
+    min-width: 600px;
   }
 }
