@@ -4,6 +4,8 @@ const fs = require('fs');
 const { OpenAI } = require('openai');
 require('dotenv').config();
 const ejs = require('ejs');
+const sitemap = require('express-sitemap-xml').buildSitemaps;
+
 
 
 const app = express();
@@ -193,6 +195,28 @@ app.get('/generate-recipe', async (req, res) => {
   }
 });
 
+app.get('/sitemap.xml', (req, res) => {
+  const baseUrl = 'https://recipebotpro.com/'; // Replace with your website's base URL
+
+  const staticUrls = [
+    { url: '/', changefreq: 'daily', priority: 1 },
+    { url: '/recipes', changefreq: 'daily', priority: 0.9 },
+  ];
+
+  const recipesDir = path.join(__dirname, 'public', 'recipes');
+  const recipeFiles = fs.readdirSync(recipesDir).filter(file => file.endsWith('.html'));
+  const dynamicUrls = recipeFiles.map(file => ({
+    url: `/recipes/${file}`,
+    changefreq: 'weekly',
+    priority: 0.8,
+    lastmod: fs.statSync(path.join(recipesDir, file)).mtime,
+  }));
+
+  const sitemapXml = sitemap(baseUrl, [...staticUrls, ...dynamicUrls]);
+
+  res.header('Content-Type', 'application/xml');
+  res.send(sitemapXml);
+});
 
 
 app.listen(port, () => {
