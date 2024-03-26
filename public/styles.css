@@ -8,6 +8,7 @@ body {
   min-height: 100vh;
 }
 
+
 header {
   background-color: #ff6b00;
   padding: 20px;
@@ -88,13 +89,14 @@ label {
 }
 
 input[type="text"] {
-  width: 100%;
+  width: 80%;
   max-width: 600px;
   padding: 12px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-bottom: 20px;
+  box-sizing: border-box;
 }
 
 button {
@@ -234,12 +236,32 @@ a:hover {
     padding: 0 10px; /* add slight padding on the sides */
   }
 
-  header, main, form, .recipe-list, .hero, .recent-recipes, .recipe-content {
+  header, main, .recipe-list, .hero, .recent-recipes, .recipe-content {
     padding: 10px; /* reduce padding for very small screens */
   }
 
   nav ul li {
     margin-bottom: 10px; /* space out nav items */
+  }
+
+  input[type="text"] {
+    max-width: 100%; /* Make input field width responsive on smaller screens */
+  }
+
+  form {
+    align-items: center; /* Center form items */
+    width: 100%; /* Make the form container full width */
+  }
+
+  #recipe-form {
+    display: flex; /* Make the recipe-form container a flex container */
+    flex-direction: column; /* Align the form items vertically */
+    align-items: center; /* Center the form items horizontally */
+    width: 100%; /* Make the recipe-form container full width */
+  }
+
+  input[type="text"] {
+    text-align: left; /* Reset text-align to left */
   }
 }
 
