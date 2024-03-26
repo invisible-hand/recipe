@@ -164,7 +164,10 @@ app.get('/generate-recipe', async (req, res) => {
   - Use <h2> tags for the main sections (e.g., Ingredients, Cooking Time, Instructions).
   - Use <h3> tags for any subsections within the main sections.
   - Use <strong> tags to make important text or phrases bold.
-  - Format ingredients list as a table, with bold headers and borders`;
+  - Format ingredients list as a table, with bold headers and borders
+  - Format Instructions as a list of steps with each step on a new line.
+  - Format Tips as a list of tips with each tip on a new line.
+  `;
 
   try {
     const messages = [
