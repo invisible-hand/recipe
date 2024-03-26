@@ -25,7 +25,9 @@ app.get('/', (req, res) => {
     .slice(0, 10);
 
   const recentRecipesList = recipeFiles.map(file => {
-    const dishName = file.slice(0, -5).replace(/-/g, ' ');
+    const dishName = file.slice(0, -5)
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, char => char.toUpperCase());
     return `<li><a href="/recipes/${file}">${dishName}</a></li>`;
   }).join('');
 
@@ -36,6 +38,8 @@ app.get('/', (req, res) => {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Recipe Generator</title>
+      <meta name="description" content="Generate delicious recipes with our easy-to-use recipe generator. Discover a wide range of dishes and create your own personalized recipes.">
+      <meta name="keywords" content="recipe generator, recipes, cooking, dishes, ingredients, instructions">
       <link rel="stylesheet" href="/styles.css">
       <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     </head>
@@ -89,8 +93,8 @@ app.get('/recipes', (req, res) => {
 
   const recipeList = recipeFiles.map(file => {
     const dishName = file.slice(0, -5)
-    .replace(/-/g, ' ')
-    .replace(/\b\w/g, char => char.toUpperCase());
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, char => char.toUpperCase());
     return `
       <li>
         <a href="/recipes/${file}">
@@ -103,10 +107,17 @@ app.get('/recipes', (req, res) => {
   }).join('');
 
   const recipesHtml = `
-    <html>
+    <!DOCTYPE html>
+    <html lang="en">
       <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>All Recipes</title>
         <link rel="stylesheet" href="/styles.css">
+        <meta name="description" content="Explore our collection of generated recipes. Browse through a variety of dishes and find inspiration for your next meal.">
+        <meta name="keywords" content="recipes, generated recipes, dishes, cooking, ingredients, instructions">
+       
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
       </head>
       <body>
         <header>
