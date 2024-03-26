@@ -153,10 +153,11 @@ app.get('/generate-recipe', async (req, res) => {
   const dishName = req.query.dish;
   const prompt = `Generate a recipe for ${dishName}. Include the following sections:
   
+  - ${dishName}
   - Introduction: Provide a brief introduction to the recipe.
   - Ingredients: List the ingredients required for the recipe.
   - Cooking Time: Specify the cooking time for the recipe.
-  - Instructions: Provide step-by-step instructions to make the recipe.
+  - Instructions: Provide step-by-step instructions to make the recipe. Make sure each step is on a new line.
 
   Format the sections as follows:
   - Use <h2> tags for the main sections (e.g., Ingredients, Cooking Time, Instructions).
@@ -209,13 +210,26 @@ app.get('/sitemap.xml', (req, res) => {
     url: `/recipes/${file}`,
     changefreq: 'weekly',
     priority: 0.8,
-    lastmod: fs.statSync(path.join(recipesDir, file)).mtime,
+    lastmod: fs.statSync(path.join(recipesDir, file)).mtime.toISOString(),
   }));
 
-  const sitemapXml = sitemap(baseUrl, [...staticUrls, ...dynamicUrls]);
+  const urls = [...staticUrls, ...dynamicUrls];
+
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      ${urls.map(url => `
+        <url>
+          <loc>${baseUrl}${url.url}</loc>
+          <lastmod>${url.lastmod || new Date().toISOString()}</lastmod>
+          <changefreq>${url.changefreq}</changefreq>
+          <priority>${url.priority}</priority>
+        </url>
+      `).join('')}
+    </urlset>
+  `;
 
   res.header('Content-Type', 'application/xml');
-  res.send(sitemapXml);
+  res.send(sitemap);
 });
 
 
