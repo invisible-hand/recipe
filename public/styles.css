@@ -44,7 +44,6 @@ nav ul li a {
 
 main {
   max-width: 800px;
-  min-width: 800px;
   margin: 20px auto;
   padding: 20px;
   background-color: #fff;
@@ -77,7 +76,8 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 600px;
+  width: 100%;
+  max-width: 800px;
 }
 
 label {
@@ -89,7 +89,7 @@ label {
 
 input[type="text"] {
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
   padding: 12px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -125,7 +125,7 @@ footer {
   grid-gap: 20px;
   list-style-type: none;
   padding: 0;
-  min-width: 600px;
+  width: 100%;
 }
 
 .recipe-item {
@@ -150,7 +150,6 @@ footer {
   text-align: center;
   padding: 40px 0;
   background-color: #ffd1b3;
-  min-width: 600px;
 }
 
 .hero h2 {
@@ -160,7 +159,6 @@ footer {
 
 .recent-recipes {
   margin-top: 40px;
-  min-width: 600px;
 }
 
 .recent-recipes h2 {
@@ -189,7 +187,6 @@ footer {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   line-height: 1.6;
-  min-width: 600px;
 }
 
 .recipe-content p {
@@ -215,4 +212,40 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  header nav ul li {
+    display: block; /* stack nav items vertically */
+    margin: 0 auto; /* center nav items */
+  }
+
+  form, .recipe-list, .hero, .recent-recipes, .recipe-content {
+    padding: 20px; /* add padding on smaller screens */
+  }
+
+  h1, h2, h3 {
+    font-size: smaller; /* adjust heading sizes for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0 10px; /* add slight padding on the sides */
+  }
+
+  header, main, form, .recipe-list, .hero, .recent-recipes, .recipe-content {
+    padding: 10px; /* reduce padding for very small screens */
+  }
+
+  nav ul li {
+    margin-bottom: 10px; /* space out nav items */
+  }
+}
+
+/* Media query for desktop screens */
+@media (min-width: 769px) {
+  main, form {
+    min-width: 800px;
+  }
 }
