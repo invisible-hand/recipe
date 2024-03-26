@@ -54,12 +54,14 @@ app.get('/', (req, res) => {
           <h2>Create a New Recipe</h2>
           <form id="recipe-form">
             <label for="dish-name">Enter a dish name:</label>
+            <i>for example: chicken parmesan, chocolate chip cookies</i>
+            <br>
             <input type="text" id="dish-name" name="dish-name" required>
-            <button type="submit">Generate Recipe</button>
+            <button type="submit">Create Recipe</button>
           </form>
         </section>
         <section class="recent-recipes">
-          <h2>Recently Generated Recipes</h2>
+          <h2>Recently Created Recipes</h2>
           <ul>
             ${recentRecipesList}
           </ul>
