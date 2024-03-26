@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe for <%= dishName %></title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/recipe-styles.css">
+</head>
+<body>
+  <header>
+    <h1>Recipe Generator</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/recipes">All Recipes</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Recipe for <%= dishName %></h2>
+    <div class="recipe-content">
+      <%- recipeHtml %>
+    </div>
+    <a href="/">Go Back</a>
+  </main>
+  <footer>
+    <p>&copy; 2023 Recipe Generator. All rights reserved.</p>
+  </footer>
+</body>
+</html>

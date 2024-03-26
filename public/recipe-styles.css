@@ -1,0 +1,102 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.recipe-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-content p {
+  line-height: 1.6;
+}
+
+.recipe-content ul {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.recipe-content li {
+  margin-bottom: 5px;
+}
+
+.recipe-content h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff8f1;
+}
+
+h1, h2 {
+  font-family: 'Merriweather', serif;
+}
+
+header {
+  background-color: #ff6b00;
+  padding: 20px;
+  color: #fff;
+}
+
+main {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-content {
+  line-height: 1.6;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+
+h1, h2, h3 {
+  margin-top: 30px;
+  font-family: 'Merriweather', serif;
+  /* ... */
+}
+
+header {
+  background-color: #ff6b00;
+  /* ... */
+}
+
+.recipe-item {
+  background-color: #fff8f1;
+  /* ... */
+}
+
+.hero {
+  background-color: #ffd1b3;
+  /* ... */
+}
