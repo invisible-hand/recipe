@@ -158,6 +158,7 @@ app.get('/generate-recipe', async (req, res) => {
   - Ingredients: List the ingredients required for the recipe.
   - Cooking Time: Specify the cooking time for the recipe.
   - Instructions: Provide step-by-step instructions to make the recipe. Make sure each step is on a new line.
+  - Tips: Provide any additional details, tips or other ideas on how to improve the recipe.
 
   Format the sections as follows:
   - Use <h2> tags for the main sections (e.g., Ingredients, Cooking Time, Instructions).
@@ -171,10 +172,10 @@ app.get('/generate-recipe', async (req, res) => {
     ];
 
     const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-3.5-turbo-0125",
       messages: messages,
       temperature: 0,
-      max_tokens: 1500
+      max_tokens: 3000
     });
 
     const recipeHtml = response.choices[0].message.content.trim();
