@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
     .sort((a, b) => fs.statSync(path.join(recipesDir, b)).mtime.getTime() - fs.statSync(path.join(recipesDir, a)).mtime.getTime())
     .slice(0, 10);
 
-  const recipeList = recipeFiles.map(file => {
+  const recentRecipesList = recipeFiles.map(file => {
     const dishName = file.slice(0, -5).replace(/-/g, ' ');
     return `<li><a href="/recipes/${file}">${dishName}</a></li>`;
   }).join('');
@@ -35,6 +35,7 @@ app.get('/', (req, res) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Recipe Generator</title>
       <link rel="stylesheet" href="/styles.css">
+      <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     </head>
     <body>
       <header>
@@ -48,7 +49,7 @@ app.get('/', (req, res) => {
       </header>
       <main>
         <section class="hero">
-          <h2>Generate a Recipe</h2>
+          <h2>Create a New Recipe</h2>
           <form id="recipe-form">
             <label for="dish-name">Enter a dish name:</label>
             <input type="text" id="dish-name" name="dish-name" required>
@@ -58,7 +59,7 @@ app.get('/', (req, res) => {
         <section class="recent-recipes">
           <h2>Recently Generated Recipes</h2>
           <ul>
-            ${recipeList}
+            ${recentRecipesList}
           </ul>
         </section>
       </main>
@@ -83,13 +84,14 @@ app.get('/recipes', (req, res) => {
   const recipeFiles = fs.readdirSync(recipesDir).filter(file => file.endsWith('.html'));
 
   const recipeList = recipeFiles.map(file => {
-    const dishName = file.slice(0, -5).replace(/-/g, ' ');
+    const dishName = file.slice(0, -5)
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, char => char.toUpperCase());
     return `
       <li>
         <a href="/recipes/${file}">
           <div class="recipe-item">
             <h3>${dishName}</h3>
-            <p>Click to view the recipe</p>
           </div>
         </a>
       </li>
@@ -99,7 +101,7 @@ app.get('/recipes', (req, res) => {
   const recipesHtml = `
     <html>
       <head>
-        <title>Generated Recipes</title>
+        <title>All Recipes</title>
         <link rel="stylesheet" href="/styles.css">
       </head>
       <body>
@@ -119,7 +121,7 @@ app.get('/recipes', (req, res) => {
           </ul>
         </main>
         <footer>
-          <p>&copy; 2023 Recipe Generator. All rights reserved.</p>
+          <p>&copy; 2024 Recipe Generator. All rights reserved.</p>
         </footer>
       </body>
     </html>
@@ -183,7 +185,7 @@ app.get('/generate-recipe', async (req, res) => {
             <a href="/">Go Back</a>
           </main>
           <footer>
-            <p>&copy; 2023 Recipe Generator. All rights reserved.</p>
+            <p>&copy; 2024 Recipe Generator. All rights reserved.</p>
           </footer>
         </body>
       </html>
