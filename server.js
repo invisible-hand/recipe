@@ -201,7 +201,7 @@ app.get('/generate-recipe', async (req, res) => {
 });
 
 app.get('/sitemap.xml', (req, res) => {
-  const baseUrl = 'https://recipebotpro.com/'; // Replace with your website's base URL
+  const baseUrl = 'https://recipebotpro.com'; // Replace with your website's base URL
 
   const staticUrls = [
     { url: '/', changefreq: 'daily', priority: 1 },
