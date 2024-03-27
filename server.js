@@ -45,6 +45,15 @@ app.get('/', (req, res) => {
       <link rel="stylesheet" href="/styles.css">
       <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     </head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZJEW3HXCH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9ZJEW3HXCH');
+</script>
     <body>
       <header>
         <h1>Recipe Creator</h1>
@@ -126,6 +135,15 @@ app.get('/recipes', (req, res) => {
        
         <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
       </head>
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9ZJEW3HXCH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9ZJEW3HXCH');
+</script>
       <body>
         <header>
           <h1>Recipe Generator</h1>
