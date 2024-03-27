@@ -39,7 +39,7 @@ app.get('/', (req, res) => {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Recipe Generator</title>
+      <title>Recipe Creator</title>
       <meta name="description" content="Generate delicious recipes with our easy-to-use recipe generator. Discover a wide range of dishes and create your own personalized recipes.">
       <meta name="keywords" content="recipe generator, recipes, cooking, dishes, ingredients, instructions">
       <link rel="stylesheet" href="/styles.css">
@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
     </head>
     <body>
       <header>
-        <h1>Recipe Generator</h1>
+        <h1>Recipe Creator</h1>
         <nav>
           <ul>
             <li><a href="/">Home</a></li>
@@ -56,6 +56,7 @@ app.get('/', (req, res) => {
         </nav>
       </header>
       <main>
+    
         <section class="hero">
           <h2>Create a New Recipe</h2>
           <form id="recipe-form">
@@ -66,15 +67,19 @@ app.get('/', (req, res) => {
             <button type="submit">Create Recipe</button>
           </form>
         </section>
+
+<br>
+
+
         <section class="recent-recipes">
-          <h2>Recently Created Recipes</h2>
+          <h2>Latest Recipes</h2>
           <ul>
             ${recentRecipesList}
           </ul>
         </section>
       </main>
       <footer>
-        <p>&copy; 2024 Recipe Generator. All rights reserved.</p>
+        <p>&copy; 2024 Recipe Creator. All rights reserved.</p>
       </footer>
       <script src="/script.js"></script>
     </body>
@@ -151,22 +156,29 @@ app.get('/recipes', (req, res) => {
 
 app.get('/generate-recipe', async (req, res) => {
   const dishName = req.query.dish;
-  const prompt = `Generate a recipe for ${dishName}. Include the following sections:
-  
+  const prompt = `You are an AI assistant that generates recipes based on a given dish name. 
+  You write in a serious but friendly tone, and you provide clear and concise instructions. You write in the style of Gordon Ramsay and Serious Eats.
+  Please generate a recipe for the following dish: "${dishName}"
+
+  Include the following sections in the generated recipe:
   - ${dishName}
-  - Introduction: Provide a brief introduction to the recipe.
+  - Introduction: Provide an introduction to the recipe, including the dish name and any relevant background information. Make it 5-10 sentences long. Add joke if possible.
   - Ingredients: List the ingredients required for the recipe.
   - Cooking Time: Specify the cooking time for the recipe.
   - Instructions: Provide step-by-step instructions to make the recipe. Make sure each step is on a new line.
   - Tips: Provide any additional details, tips or other ideas on how to improve the recipe.
 
   Format the sections as follows:
+  - All text should be in HTML format.
+  - Format Introduction as a blockquote in italic text. Do not include the word "Introduction".
+  - Dish name should be in H1 and there shouldn't be any other text before it.
   - Use <h2> tags for the main sections (e.g., Ingredients, Cooking Time, Instructions).
   - Use <h3> tags for any subsections within the main sections.
   - Use <strong> tags to make important text or phrases bold.
   - Format ingredients list as a table, with bold headers and borders
   - Format Instructions as a list of steps with each step on a new line.
-  - Format Tips as a list of tips with each tip on a new line.
+  - Format Tips as a html-formatted bulleted list of tips with each tip on a new line. 
+
   `;
 
   try {

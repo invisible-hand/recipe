@@ -311,3 +311,10 @@ a:hover {
     min-width: 600px;
   }
 }
+
+.recipe-content ul {
+  list-style-type: disc;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
